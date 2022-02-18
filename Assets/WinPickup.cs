@@ -11,7 +11,7 @@ public class WinPickup : MonoBehaviour
     }
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name == "Player")
+        if (collision.gameObject.name == "Player" || collision.gameObject.name == "DisguisedPlayer")
         {
             Destroy(this.transform.parent.gameObject);
             Debug.Log("Trophy Pickup collected!");
