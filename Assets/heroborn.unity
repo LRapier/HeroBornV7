@@ -3617,7 +3617,8 @@ PrefabInstance:
       propertyPath: patrolRoute
       value: 
       objectReference: {fileID: 1718503102}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4887049163707938020, guid: c344ffbb0714d7247b8a8ac1607702ae, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c344ffbb0714d7247b8a8ac1607702ae, type: 3}
 --- !u!1001 &6355239994323820059
 PrefabInstance:

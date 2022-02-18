@@ -10,6 +10,7 @@ public class Enemy : MonoBehaviour
     public List<Transform> locations;
     private int locationIndex = 0;
     private NavMeshAgent agent;
+    private bool detected;
     private int _lives = 3;
     public int EnemyLives
     {
@@ -33,9 +34,16 @@ public class Enemy : MonoBehaviour
     }
     void Update()
     {
-        if (agent.remainingDistance < 0.2f && !agent.pathPending)
+        if (detected)
         {
-            MoveToNextPatrolLocation();
+            agent.destination = player.position;
+        }
+        else
+        {
+            if (agent.remainingDistance < 0.2f && !agent.pathPending)
+            {
+                MoveToNextPatrolLocation();
+            }
         }
     }
     void OnCollisionEnter(Collision collision)
@@ -65,6 +73,7 @@ public class Enemy : MonoBehaviour
         if (other.name == "Player")
         {
             agent.destination = player.position;
+            detected = true;
             Debug.Log("Player detected - attack!");
         }
     }
@@ -72,6 +81,7 @@ public class Enemy : MonoBehaviour
     {
         if (other.name == "Player")
         {
+            detected = false;
             Debug.Log("Player out of range, resume patrol");
         }
     }
